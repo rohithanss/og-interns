@@ -65,11 +65,11 @@ for(let ele of arr1){
 
 
 
-if(val1 === 1){
-  console.log('val is 1');  
-}else if(val1 <= 2){
-  console.log('val is less than 2');
-}
+// if(val1 === 1){
+//   console.log('val is 1');  
+// }else if(val1 <= 2){
+//   console.log('val is less than 2');
+// }
 
 let val1 = 2;
 
@@ -88,12 +88,31 @@ switch(val1){
 
 
 
+let N = 5;
+let count = 0;
+let num = 0;
 
+while(count < N){
+  if(checkPrime(num)){
+    console.log(num);
+    count++;
+  }
+  num++
+}
 
-
-
-
-
+function checkPrime(num){
+  if(num<2){
+    return false;
+  }
+  for(let i=2;i<num;i++){
+    if(num%i==0){
+      return false;
+    }
+  }
+  return true;
+}
+let fn = ()=>{}
+console.log(checkPrime(fn))
 
 
 
