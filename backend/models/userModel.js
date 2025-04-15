@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const {mongooseWriteBufferPlugin} = require('../mongoose-kafka-plugin');
 
 
 const userSchema = new mongoose.Schema({
@@ -20,6 +20,23 @@ const userSchema = new mongoose.Schema({
   timestamps: true,
   versionKey: false,
 })
+
+// userSchema.plugin(mongooseWriteBufferPlugin, {
+//   redis: {
+//     host: 'localhost',
+//     port: 6379,
+//     keyPrefix: 'app:users:'
+//   },
+//   kafka: {
+//     clientId: 'user-service',
+//     brokers: ['localhost:9092'],
+//     topic: 'mongodb-user-ops'
+//   },
+//   buffer: {
+//     maxSize: 1000,        // Flush after 1000 operations
+//     flushInterval: 5000   // Or after 5 seconds
+//   }
+// });
 
 const UserModel = mongoose.model('User', userSchema);
 

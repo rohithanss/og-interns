@@ -10,7 +10,7 @@ const getParams = (req, res) => {
 
 const getParamsBase = async (req, res) => {
   let query = req.query;
-  let existingDoc = await UserModel.findOne();
+  let existingDoc = await UserModel.find();
   // if(existingDoc!=null) {
   //   return res.status(400).json({error: 'Email already exists'});
   // }
