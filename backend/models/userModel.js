@@ -14,12 +14,19 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+  },
+  role: {
+    type:String,
+    enum : ['USER', 'ADMIN'],
+    default:'USER'
   }
     
 }, {
   timestamps: true,
   versionKey: false,
 })
+
+userSchema.index({ email: 1 });
 
 // userSchema.plugin(mongooseWriteBufferPlugin, {
 //   redis: {

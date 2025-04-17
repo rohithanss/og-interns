@@ -6,7 +6,9 @@ const port = 3000;
 const authRouter  = require('./routes/auth.router.js');
 const todoRouter  = require('./routes/todo.router.js');
 const baseRouter = require('./routes/base.router.js');
+const adminRouter = require('./routes/admin.router.js');
 const authenticate = require('./middlewares/authenticate.js');
+const authorization = require('./middlewares/authorisation.js');
 require('./config/db.js');
 // Middleware to parse JSON request bodies
 app.use(express.json());
@@ -17,7 +19,9 @@ app.use((a,b,c)=>{
   c();
 })
 app.use('/auth', authRouter);
-app.use('/todo',authenticate,  todoRouter)
+app.use('/todo',authenticate,  todoRouter);
+app.use('/admin',authenticate, authorization(['ADMIN']), adminRouter);
+
 app.use(baseRouter )
 // Start the server
 app.listen(port, () => {

@@ -5,12 +5,6 @@ const router = express.Router();
 
 // POST /auth/login
 
-router.get('/user', (req, res) => {
-  // const { email, password } = req.body;
-  // Placeholder login logic
-  res.send(`Login attempt with email: `);
-});
-
 
 router.post('/login', async  (req, res) => {
   console.log(req.body)
@@ -23,7 +17,7 @@ router.post('/login', async  (req, res) => {
   if(!user){
     res.status(401).send({messagge:"unauthorised"})
   }
-  var token = await jwt.sign({userId: user._id}, 'hans');
+  var token = await jwt.sign({userId: user._id, role: user.role || 'USER' }, 'hans');
 
 
   res.send({message:"login ", token});
