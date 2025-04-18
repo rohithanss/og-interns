@@ -48,3 +48,5 @@ userSchema.index({ email: 1 });
 const UserModel = mongoose.model('User', userSchema);
 
 module.exports = UserModel;
+
+
